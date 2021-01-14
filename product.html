@@ -106,7 +106,7 @@ window.onclick = function(event) {
 
     <div class="w3-col m6 w3-padding-large">
       <h1 class="w3-center" style="color:gold" id="mainheading">`+sc[key].HospitalName+`</h1><br>
-      <h5 class="w3-center" style="color:gold">It is the favorite food of south indians.</h5>
+      <h5 class="w3-center" style="color:gold"></h5>
       <p class="w3-large">`+sc[key].Description+`</p>
       <p class="w3-large w3-text-grey w3-hide-medium">`+sc[key].Descript+`</p>
       <button id="myBtn" class="b11" onclick=showmodel("myModal")>Add to cart</button>
@@ -138,9 +138,12 @@ window.onclick = function(event) {
 </div>`   
     
     }
+    let user =window.localStorage.getItem("loggedinuser");
     function addCart(fname,price,id){
-     
-      var quantity=document.querySelector('#'+id).value
+        if(!user){
+            window.location="login.html"
+        }else{
+             var quantity=document.querySelector('#'+id).value
 
       let newformMessage=formMessage4.push();
       newformMessage.set({
@@ -152,6 +155,8 @@ window.onclick = function(event) {
         });
       alert("data added in cart")
       window.location="cart.html"
+        }
+   
     
     
     }

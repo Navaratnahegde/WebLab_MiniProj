@@ -163,9 +163,10 @@
 
 
   }
-
+  var user=window.localStorage.getItem("loggedinuser")
+  // alert(user)
   function gotData(data){
-    var user=window.localStorage.getItem("loggedinuser")
+
     var sc4=data.val()
     var keys=Object.keys(sc4)
    // $('#Cart').empty()
@@ -178,11 +179,11 @@
       
       var quantity=sc4[k].Quantity;
       Price=Price*parseInt(quantity)
-     
-
+      alert(user + "--"+Key)
+  
       if(user==Key){
 
-      
+      alert(8)
       document.getElementById("Cart").innerHTML+=
         
       `<p><a href="#">`+Name+`</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>`+quantity+`</span><span class="price">`+Price+`</span></p>
@@ -203,7 +204,7 @@
             if(answer){
                 
                 firebase.database().ref("cart").child(key).remove();
-              alert("Food Data Deleted")// File deleted successfully
+              alert("Data removed Successfully")// File deleted successfully
               window.location="cart.html" 
               }
              
